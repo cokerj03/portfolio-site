@@ -1,0 +1,519 @@
+<title>Jamie Coker — Software Engineer</title>
+<meta name="description" content="Portfolio of Jamie Coker — software engineer transitioning from 10+ years in logistics, operations, and customer engagement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0a0d12;
+    --bg-elevated: #10151c;
+    --bg-card: #141b23;
+    --border: rgba(255,255,255,0.09);
+    --border-strong: rgba(255,255,255,0.16);
+    --text-primary: #f4f1ea;
+    --text-secondary: #9aa7b4;
+    --text-muted: #66707c;
+    --accent: #ff7a33;
+    --accent-dim: #cc5f24;
+    --accent-soft: rgba(255,122,51,0.13);
+    --route: #35c4d6;
+    --route-soft: rgba(53,196,214,0.14);
+    --good: #35c46f;
+    --good-soft: rgba(53,196,111,0.13);
+    --font-display: "Big Shoulders Display", sans-serif;
+    --font-body: "IBM Plex Sans", -apple-system, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.055) 1px, transparent 0);
+    background-size: 28px 28px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  ::selection { background: var(--accent-soft); color: var(--text-primary); }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- Nav ---------- */
+  nav.topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(10px);
+    background: rgba(10,13,18,0.82);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    max-width: 1080px; margin: 0 auto; padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between; height: 62px;
+  }
+  .mark {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.35rem;
+    letter-spacing: 0.02em; text-decoration: none; color: var(--text-primary);
+  }
+  .mark span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-secondary); font-size: 0.88rem;
+    font-weight: 500; transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a.cta {
+    color: var(--bg); background: var(--accent); padding: 8px 16px; border-radius: 4px; font-weight: 600;
+  }
+  .nav-links a.cta:hover { background: #ff8c4d; color: var(--bg); }
+  @media (max-width: 720px) { .nav-links .hide-sm { display: none; } }
+
+  /* ---------- Eyebrow / section labels ---------- */
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 0.78rem; color: var(--route);
+    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--route); display: inline-block; }
+
+  section { padding: 96px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 { font-family: var(--font-display); font-weight: 700; font-size: 2.1rem; margin: 0 0 8px; text-wrap: balance; letter-spacing: 0.01em; }
+  .section-sub { color: var(--text-secondary); margin: 0 0 44px; max-width: 60ch; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 88px 0 80px; border-bottom: 1px solid var(--border); }
+  .hero .eyebrow { color: var(--accent); }
+  .hero .eyebrow::before { background: var(--accent); }
+  h1 {
+    font-family: var(--font-display); font-weight: 800; letter-spacing: 0.01em;
+    font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.95; margin: 0 0 20px; text-wrap: balance;
+  }
+  .hero-lede { font-size: 1.15rem; color: var(--text-secondary); max-width: 56ch; margin: 0 0 40px; }
+  .hero-lede strong { color: var(--text-primary); font-weight: 600; }
+
+  .route {
+    display: flex; align-items: flex-start; gap: 0; margin: 0 0 44px; flex-wrap: wrap; row-gap: 18px;
+  }
+  .waypoint { display: flex; flex-direction: column; gap: 6px; }
+  .waypoint .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted); margin-bottom: 2px; }
+  .waypoint.origin .dot { background: var(--route); box-shadow: 0 0 0 4px var(--route-soft); }
+  .waypoint.dest .dot { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .waypoint .wp-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; }
+  .waypoint .wp-value { font-weight: 600; font-size: 0.98rem; }
+  .route-line { flex: 1 1 140px; min-width: 100px; margin: 4px 18px 0; align-self: flex-start; }
+  .route-line svg { width: 100%; height: 10px; display: block; overflow: visible; }
+  .route-line path {
+    stroke: var(--route); stroke-width: 1.5; fill: none; opacity: 0.55;
+    stroke-dasharray: 220; stroke-dashoffset: 220; animation: draw 1.6s ease forwards 0.3s;
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--font-body); font-weight: 600; font-size: 0.92rem; padding: 13px 22px;
+    border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    border: 1px solid transparent;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #1a0e05; }
+  .btn-primary:hover { background: #ff8c4d; }
+  .btn-ghost { border-color: var(--border-strong); color: var(--text-primary); }
+  .btn-ghost:hover { border-color: var(--route); color: var(--route); }
+
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
+  .about-grid p { color: var(--text-secondary); margin: 0 0 18px; max-width: 62ch; }
+  .about-grid p strong { color: var(--text-primary); font-weight: 600; }
+  @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Skills ---------- */
+  .skill-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .skill-col h3 {
+    font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-muted); margin: 0 0 16px; font-weight: 500;
+  }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--font-mono); font-size: 0.82rem; padding: 6px 11px; border-radius: 3px;
+    border: 1px solid var(--border-strong); color: var(--text-secondary); position: relative;
+  }
+  .tag::before {
+    content: ""; position: absolute; left: -1px; top: -1px; width: 6px; height: 6px;
+    border-top: 1px solid var(--route); border-left: 1px solid var(--route);
+  }
+  @media (max-width: 720px) { .skill-cols { grid-template-columns: 1fr; } }
+
+  /* ---------- Projects ---------- */
+  .projects { display: flex; flex-direction: column; gap: 20px; }
+  .project-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 28px 30px; transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .project-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .project-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 6px; flex-wrap: wrap; }
+  .project-id { font-family: var(--font-mono); font-size: 0.78rem; color: var(--route); }
+  .project-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin: 2px 0 4px; }
+  .project-tagline { color: var(--text-secondary); font-size: 0.92rem; margin: 0 0 14px; }
+  .badge {
+    font-family: var(--font-mono); font-size: 0.72rem; padding: 4px 9px; border-radius: 3px;
+    background: var(--good-soft); color: var(--good); white-space: nowrap; font-weight: 500;
+  }
+  .project-desc { color: var(--text-secondary); margin: 0 0 18px; max-width: 68ch; }
+  .project-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .stack-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack-tags span {
+    font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted);
+    border: 1px solid var(--border); padding: 3px 8px; border-radius: 3px;
+  }
+  .project-links { display: flex; gap: 16px; }
+  .project-links a {
+    font-size: 0.85rem; font-weight: 600; text-decoration: none; color: var(--accent);
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .project-links a:hover { color: #ff8c4d; }
+
+  /* ---------- Experience ---------- */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 1px; background: var(--border-strong); }
+  .tl-item { position: relative; padding-bottom: 34px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -28px; top: 5px; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--route);
+  }
+  .tl-dates { font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); margin-bottom: 3px; }
+  .tl-role { font-weight: 600; font-size: 1.02rem; }
+  .tl-org { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 6px; }
+  .tl-note { color: var(--text-secondary); font-size: 0.9rem; max-width: 60ch; }
+
+  /* ---------- Education ---------- */
+  .edu-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; }
+  .degree { margin-bottom: 22px; }
+  .degree:last-child { margin-bottom: 0; }
+  .degree .deg-name { font-weight: 600; font-size: 1.02rem; }
+  .degree .deg-school { color: var(--text-secondary); font-size: 0.92rem; }
+  .degree .deg-date { font-family: var(--font-mono); font-size: 0.76rem; color: var(--route); margin-top: 3px; }
+  .cert-group { margin-bottom: 20px; }
+  .cert-group h4 {
+    font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-muted); margin: 0 0 10px; font-weight: 500;
+  }
+  @media (max-width: 720px) { .edu-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Contact ---------- */
+  .contact-wrap { display: flex; flex-direction: column; gap: 22px; }
+  .contact-email {
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(1.8rem, 5vw, 3rem);
+    text-decoration: none; color: var(--text-primary); display: inline-block; width: fit-content;
+    border-bottom: 2px solid var(--accent);
+  }
+  .contact-email:hover { color: var(--accent); }
+  .contact-meta { display: flex; gap: 28px; flex-wrap: wrap; color: var(--text-secondary); font-size: 0.92rem; }
+  .contact-meta a { text-decoration: none; color: var(--text-secondary); border-bottom: 1px solid var(--border-strong); padding-bottom: 1px; }
+  .contact-meta a:hover { color: var(--route); border-color: var(--route); }
+
+  footer { padding: 32px 0 48px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  footer p { color: var(--text-muted); font-size: 0.8rem; margin: 0; font-family: var(--font-mono); }
+</style>
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="mark">JAMIE<span>·</span>CODER</a>
+    <div class="nav-links">
+      <a href="#about" class="hide-sm">About</a>
+      <a href="#skills" class="hide-sm">Skills</a>
+      <a href="#projects" class="hide-sm">Projects</a>
+      <a href="#experience" class="hide-sm">Experience</a>
+      <a href="#contact" class="cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div id="top"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Software Engineer — In Transit</p>
+    <h1>JAMIE<br>COKER</h1>
+    <p class="hero-lede">
+      Building software after a decade spent <strong>keeping freight, students, and operations moving</strong>.
+      Now finishing a Computer Science degree and shipping practical, working projects instead of tutorials.
+    </p>
+
+    <div class="route">
+      <div class="waypoint origin">
+        <span class="dot"></span>
+        <span class="wp-label">Origin · 2006–2020</span>
+        <span class="wp-value">Logistics &amp; Operations</span>
+      </div>
+      <div class="route-line">
+        <svg viewBox="0 0 200 6" preserveAspectRatio="none"><path d="M0 3 L200 3"/></svg>
+      </div>
+      <div class="waypoint dest">
+        <span class="dot"></span>
+        <span class="wp-label">Destination · 2020–Present</span>
+        <span class="wp-value">Software Engineering</span>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:cokerj03@gmail.com" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <p class="eyebrow" style="margin:0">About</p>
+    <div>
+      <p>
+        For more than ten years I kept complicated operations running — coordinating freight across land, air,
+        and sea, guiding thousands of prospective students through enrollment, training new hires, and fixing
+        problems in real time when a shipment or a system didn't behave. Somewhere in the middle of all that,
+        I got curious about the systems underneath the work, and started building them instead of just running them.
+      </p>
+      <p>
+        I'm finishing a <strong>B.S. in Computer Science</strong> at Concordia University – St. Paul, with graduate
+        work in <strong>Cloud Computing</strong> and <strong>Data Science &amp; AI</strong> underway at Campbellsville
+        University. The three projects below are that combination put to work: operations experience that knows
+        what a real workflow needs, paired with the engineering to build it.
+      </p>
+      <p>
+        I currently work remotely as a Student Engagement Specialist, building Tableau/Excel reporting and managing
+        Salesforce CRM data integrity for a higher-ed enrollment team — the same domain the Enrollment Analytics
+        project below is drawn from.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow">Skills</p>
+    <h2>What I build with</h2>
+    <p class="section-sub">Formal CS training plus a decade of learning new systems fast on the job.</p>
+    <div class="skill-cols">
+      <div class="skill-col">
+        <h3>Languages &amp; Frameworks</h3>
+        <div class="tag-list">
+          <span class="tag">C#</span><span class="tag">.NET</span><span class="tag">ASP.NET MVC</span>
+          <span class="tag">Python</span><span class="tag">CSS</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h3>Data &amp; Cloud</h3>
+        <div class="tag-list">
+          <span class="tag">PostgreSQL</span><span class="tag">AWS</span><span class="tag">Tableau</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h3>Practices &amp; Tools</h3>
+        <div class="tag-list">
+          <span class="tag">Git / GitHub</span><span class="tag">Agile / Scrum</span><span class="tag">Docker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="eyebrow">Featured Work</p>
+    <h2>Three working builds</h2>
+    <p class="section-sub">Each one runs locally, is fully tested, and is scoped around real problems from my own work history — not tutorial projects.</p>
+
+    <div class="projects">
+      <article class="project-card">
+        <div class="project-head">
+          <div>
+            <p class="project-id">repo / shiptrack</p>
+            <h3 class="project-title">ShipTrack</h3>
+          </div>
+          <span class="badge">Full CRUD · Tested</span>
+        </div>
+        <p class="project-tagline">Shipment &amp; carrier logistics tracker</p>
+        <p class="project-desc">
+          A dashboard and CRUD app for tracking shipments, carriers, and delivery status across truck, air,
+          ocean, rail, and parcel modes — modeling the freight operations I managed for years, now as software.
+          Includes an on-time-rate KPI dashboard and a JSON API.
+        </p>
+        <div class="project-foot">
+          <div class="stack-tags"><span>Python</span><span>Flask</span><span>SQLite</span><span>PostgreSQL-ready</span></div>
+          <div class="project-links">
+            <a href="https://github.com/cokerj03/shiptrack">View on GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-head">
+          <div>
+            <p class="project-id">repo / enrollment-funnel-analytics</p>
+            <h3 class="project-title">Enrollment Funnel Analytics</h3>
+          </div>
+          <span class="badge">5,100+ records analyzed</span>
+        </div>
+        <p class="project-tagline">CRM enrollment-pipeline dashboard</p>
+        <p class="project-desc">
+          Analyzes a CRM-style lead pipeline (Inquiry → Applicant → Admitted → Enrolled) by channel, program,
+          and month — the same kind of analysis I run on Salesforce data in my current role. Charts are
+          hand-built inline SVG with a validated, colorblind-safe palette — no charting library required.
+        </p>
+        <div class="project-foot">
+          <div class="stack-tags"><span>Python</span><span>pandas</span><span>SVG</span></div>
+          <div class="project-links">
+            <a href="https://github.com/cokerj03/enrollment-funnel-analytics">View on GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-head">
+          <div>
+            <p class="project-id">repo / freight-rate-api</p>
+            <h3 class="project-title">Freight Rate &amp; ETA API</h3>
+          </div>
+          <span class="badge">13 / 13 tests passing</span>
+        </div>
+        <p class="project-tagline">Cloud-deployable REST API</p>
+        <p class="project-desc">
+          A stateless Flask API that estimates freight cost and delivery time between cities by shipping mode,
+          using haversine distance and a per-mode rate model. Containerized with a documented AWS App Runner /
+          Elastic Beanstalk deployment path.
+        </p>
+        <div class="project-foot">
+          <div class="stack-tags"><span>Python</span><span>Flask</span><span>Docker</span><span>AWS</span></div>
+          <div class="project-links">
+            <a href="https://github.com/cokerj03/freight-rate-api">View on GitHub →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="eyebrow">Experience</p>
+    <h2>Where the story runs through</h2>
+    <p class="section-sub">Ten years of operations and customer-facing work, now turning into software.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dates">Sep 2020 — Present</div>
+        <div class="tl-role">Student Engagement Specialist</div>
+        <div class="tl-org">RisePoint · Remote</div>
+        <div class="tl-note">Build Excel/Tableau reporting, guide prospective students through enrollment via Salesforce CRM, and support DEI and CRM data-integrity initiatives.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">Oct 2019 — Mar 2020</div>
+        <div class="tl-role">Production Manager</div>
+        <div class="tl-org">Chocolate Accents</div>
+        <div class="tl-note">Oversaw daily production scheduling and B2B/DTC fulfillment; implemented lean scheduling to improve delivery timelines.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">Aug 2017 — Sep 2019</div>
+        <div class="tl-role">Transportation Planner</div>
+        <div class="tl-org">Ravago</div>
+        <div class="tl-note">Coordinated multi-modal regional logistics (land, air, sea) and managed vendor relationships and shipment performance metrics.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">May 2015 — Aug 2018</div>
+        <div class="tl-role">Marketing, Sales &amp; Logistics Planner</div>
+        <div class="tl-org">Muvabl, Inc.</div>
+        <div class="tl-note">Designed logistics and freight strategies for e-commerce clients; handled financial management and contract negotiation.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">Dec 2010 — May 2015</div>
+        <div class="tl-role">Trainer &amp; Logistics Planner</div>
+        <div class="tl-org">IL2000</div>
+        <div class="tl-note">End-to-end logistics support for domestic and international shipments; managed client accounts and trained new hires.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">Jul 2006 — Nov 2010</div>
+        <div class="tl-role">Customer Service Trainer</div>
+        <div class="tl-org">UPS Freight</div>
+        <div class="tl-note">Delivered account resolution and customer service; trained new hires in freight operations and systems.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap edu-grid">
+    <div>
+      <p class="eyebrow">Education</p>
+      <div class="degree">
+        <div class="deg-name">B.S. Computer Science, Minor in Digital Marketing</div>
+        <div class="deg-school">Concordia University – St. Paul, Saint Paul, MN</div>
+        <div class="deg-date">December 2025</div>
+      </div>
+      <div class="degree">
+        <div class="deg-name">M.S. Cloud Computing</div>
+        <div class="deg-school">Campbellsville University – Campbellsville, KY</div>
+        <div class="deg-date">In progress · Expected October 2026</div>
+      </div>
+      <div class="degree">
+        <div class="deg-name">M.S. Data Science &amp; AI</div>
+        <div class="deg-school">Campbellsville University – Campbellsville, KY</div>
+        <div class="deg-date">In progress · Expected May 2027</div>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Certifications</p>
+      <div class="cert-group">
+        <h4>Codecademy</h4>
+        <div class="tag-list">
+          <span class="tag">Tableau for Data Visualization</span>
+          <span class="tag">Software Design Principles</span>
+          <span class="tag">Java Programming</span>
+          <span class="tag">UI &amp; UX Design</span>
+        </div>
+      </div>
+      <div class="cert-group">
+        <h4>HubSpot Academy</h4>
+        <div class="tag-list">
+          <span class="tag">Social Media Certified</span>
+          <span class="tag">Email Marketing Certified</span>
+          <span class="tag">SEO Certified</span>
+        </div>
+      </div>
+      <div class="cert-group">
+        <h4>Google</h4>
+        <div class="tag-list"><span class="tag">Google Ads Search Certification</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-wrap">
+    <p class="eyebrow" style="margin:0">Contact</p>
+    <a href="mailto:cokerj03@gmail.com" class="contact-email">cokerj03@gmail.com</a>
+    <div class="contact-meta">
+      <span>Lake Mary, FL</span>
+      <a href="https://github.com/cokerj03">GitHub</a>
+      <a href="https://linkedin.com/in/jamie-coker-59aa8a1a4">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>built by jamie coker · updated 2026-08</p>
+    <p>designed &amp; coded from scratch — no template</p>
+  </div>
+</footer>
